@@ -26,7 +26,7 @@ def checkPossibleFields(colsAvailable, what2personalize):
     possiblePersonalizes = []
     notPossiblePersonalizes = []
     for field in what2personalize:
-        if (field == 'Banner') or (field == 'Logo') or (field == 'Leading Asset') or (field == 'Asset'):
+        if (field == 'Banner') or (field == 'Logo') or (field == 'Leading Asset') or (field == 'Asset') or (field == 'Logo Dummy'):
             possiblePersonalizes.append(field)
         elif (field == 'Banner Title') and (field in colsAvailable):
             possiblePersonalizes.append(field)
@@ -70,6 +70,7 @@ def startPersonalize():
     what2personalizeChoices = [
         'Banner',
         'Logo',
+        'Logo Dummy',
         'Banner Title',
         'Banner Subtitle',
         'Items Title',

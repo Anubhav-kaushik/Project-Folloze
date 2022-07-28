@@ -1,13 +1,16 @@
 import pandas as pd
 
+
 def get_csv_data(file_location):
     df = pd.read_csv(file_location)
     return df
+
 
 def isColAvailable(col_name, colOnSheet):
     if col_name in colOnSheet:
         return True
     return False
+
 
 def availableCols(df):
     colOnSheet = list(df.columns)
@@ -38,7 +41,8 @@ def availableCols(df):
     print(f"Columns on sheet: {colOnSheet}")
     return col_available, col_status
 
-def sep_domains(domains: str, sep: str='\n'):
+
+def sep_domains(domains: str, sep: str = '\n'):
     domains = domains.replace(' ', sep)
     domainsList = domains.split(sep)
     for _ in range(len(domainsList)):
@@ -48,11 +52,12 @@ def sep_domains(domains: str, sep: str='\n'):
             continue
     return domainsList
 
+
 def dataCleansing(df):
     col_available, col_status = availableCols(df)
     newData = {}
     for col in col_available:
-        temp = list(map(lambda x: x.strip(), df[col]))
+        temp = list(map(lambda x: str(x).strip(), df[col]))
         if len(temp) < 1:
             col_status[col] = False
             continue
@@ -61,6 +66,7 @@ def dataCleansing(df):
     newData['Domain'] = list(map(sep_domains, newData['Domain']))
 
     return newData, col_status
+
 
 def dataInfo(col_status):
     col_found = []
@@ -75,6 +81,8 @@ def dataInfo(col_status):
     return col_found
 
 # main function
+
+
 def getCleanData(file_location):
     df = get_csv_data(file_location)
     cleanData, column_status = dataCleansing(df)
@@ -84,7 +92,7 @@ def getCleanData(file_location):
 
 if __name__ == "__main__":
     csvFileLocation = "data/data.csv"
-    
+
     df = get_csv_data(csvFileLocation)
 
     # Expected values

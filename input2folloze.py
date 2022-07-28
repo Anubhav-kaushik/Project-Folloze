@@ -37,7 +37,6 @@ class Account:
             if wait_time >= 4:
                 return False
             speak('program is awake')
-            speak(f'searching for {file_name} again')
             return self.moveTo(file_location, file_name, wait_time)
 
         gui.moveTo(pos)
@@ -50,7 +49,7 @@ class Account:
             if pos != None:
                 gui.moveTo(pos)
                 return True
-        
+
         if pos == None:
             print(f'file not found on screen')
             speak(
@@ -198,20 +197,43 @@ class Account:
         gui.click()
         time.sleep(wait_time)
 
+    def waitUntilFound(self, imgLoc):
+        status = self.find_image(imgLoc)
+
+        while status == None:
+            time.sleep(0.5)
+            status = self.find_image(imgLoc)
+
+        return status
+    
     def personalizeText(self):
         '''this function add the text to the last text block'''
         # gui.hotkey('shift', 'tab')
         # gui.hotkey('shift', 'tab')
-        [x, y] = self.find_image(
-            'img/designer/personalization/add_alternative_rule.png')
+        [x, y] = self.waitUntilFound('img/designer/personalization/add_alternative_rule.png')
         gui.moveTo(x, y-120)
         gui.click()
         copy(self.text)
         gui.hotkey('ctrl', 'v')
         gui.scroll(-1000)
 
+    def findNClick(self, imgLoc):
+        [x1, y1] = self.waitUntilFound(imgLoc)
+        gui.moveTo(x1, y1)
+        gui.click()
+
+    def addDummyLogo(self):
+        '''This function add dummy logo to the logo field'''
+        # click on select image button
+        self.findNClick('img/designer/logo/select_image.png')
+
+        # click on apply button
+        self.findNClick('img/designer/logo/apply.png')
+
+
     def searchAsset(self):
-        self.moveToAny(['img/designer/personalization/search.png', 'img/designer/personalization/cross.png'])
+        self.moveToAny(['img/designer/personalization/search.png',
+                       'img/designer/personalization/cross.png'])
         [x, y] = gui.position()
         gui.moveTo(x-100, y)
         gui.click()
@@ -223,10 +245,10 @@ class Account:
 
         time.sleep(2)
         # drag and drop the asset to the text block
-        [dropX, dropY] = self.find_image(
+        [dropX, dropY] = self.waitUntilFound(
             'img/designer/personalization/drop_here.png')
         gui.moveTo(x-100, y+50)
-        gui.dragTo(dropX, dropY, 3, button='left')
+        gui.dragTo(dropX, dropY, 1.5, button='left')
 
 
 class PersonalizationBot:
@@ -237,7 +259,13 @@ class PersonalizationBot:
         self.what2personalize = what2personalize
 
         if what2personalize == 'Leading Asset':
+            self.texts = cleanData['AE/Rep Name']
+        elif what2personalize == 'Contact card':
             self.texts = cleanData['AE/Rep Email']
+        elif what2personalize == 'Logo' or what2personalize == 'Logo Dummy':
+            self.texts = None
+        elif what2personalize == 'Additional Domains':
+            self.addDomains = cleanData[what2personalize]
         else:
             self.texts = cleanData[what2personalize]
 
@@ -249,11 +277,11 @@ class PersonalizationBot:
 
         self.isSpecificAEs = False
 
-        if (self.what2personalize == 'AE/Rep Email') or (self.what2personalize == 'AE/Rep Name') or (self.what2personalize == 'Leading Asset'):
+        if (self.what2personalize == 'AE/Rep Email') or (self.what2personalize == 'AE/Rep Name') or (self.what2personalize == 'Leading Asset') or (self.what2personalize == 'Contact card'):
             isSpecfic = input(
                 'Do you want to personalize the contact card of some specific AEs? (y/n): ')
             if isSpecfic == 'y':
-                uniqueAEs = list(set(self.texts))
+                uniqueAEs = list(set([x.lower() for x in self.texts]))
                 print('The following AEs are available: ')
                 for i, ae in enumerate(uniqueAEs):
                     print(f'{i+1}. {ae}')
@@ -263,6 +291,7 @@ class PersonalizationBot:
                 self.specificAEs = self.specificAEs.split(',')
                 self.specificAEs = [
                     uniqueAEs[int(x)-1] for x in self.specificAEs]
+                print(f'The following AEs are selected: {self.specificAEs}')
                 self.isSpecificAEs = True
 
     def personalize(self):
@@ -279,11 +308,14 @@ class PersonalizationBot:
             accountObj = Account(account, domains, text)
             accountObj.personalizeDomains()
 
-            if self.what2personalize not in ['Logo', 'Asset', 'Leading Asset', 'Banner']:
+            if self.what2personalize not in ['Logo', 'Asset', 'Leading Asset', 'Banner', 'Contact card', 'Logo Dummy']:
                 accountObj.personalizeText()
 
             if self.what2personalize == 'Leading Asset':
                 accountObj.searchAsset()
+            
+            if self.what2personalize == 'Logo Dummy':
+                accountObj.addDummyLogo()
 
         speak(f'All the {self.what2personalize} are personalized')
 
