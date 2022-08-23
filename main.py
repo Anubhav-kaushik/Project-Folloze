@@ -38,6 +38,8 @@ def checkPossibleFields(colsAvailable, what2personalize):
             possiblePersonalizes.append(field)
         elif (field == 'Contact Card') and ('AE/Rep Email' in colsAvailable):
             possiblePersonalizes.append('AE/Rep Email')
+        elif field == 'Additional Domains':
+            possiblePersonalizes.append('Additional Domains')
         else:
             notPossiblePersonalizes.append(field)
 
@@ -68,6 +70,7 @@ def startPersonalize():
     print('\n')
     print('Select the fields you want to personalize')
     what2personalizeChoices = [
+        'Additional Domains',
         'Banner',
         'Logo',
         'Logo Dummy',
@@ -118,14 +121,19 @@ def startPersonalize():
     for field in possibleFields:
         bots[field] = PersonalizationBot(cleanData, field)
         print(f'Open {field} personalization window. Bot is ready to personalize.\nPress Ctrl+q to start')
-        bots[field].personalize()
+        if field == 'Additional Domains':
+            bots[field].addXDomains()
+        else:
+            bots[field].personalize()
 
-    wantFollozeLinks = input('Do you want to create folloze links (y/n): ').lower()
-    if wantFollozeLinks == 'y':
-        baseboardLink = input('Enter the baseboard link: ')
-        follozeLinks = createFollozeLinks(baseboardLink, cleanData['Domain'])
-        cleanData['Folloze Links'] = follozeLinks
+    # wantFollozeLinks = input('Do you want to create folloze links (y/n): ').lower()
+    # if wantFollozeLinks == 'y':
+    #     baseboardLink = input('Enter the baseboard link: ')
+    #     follozeLinks = createFollozeLinks(baseboardLink, cleanData['Domain'])
+    #     cleanData['Folloze Links'] = follozeLinks
 
 
 startPersonalize()
+
+speak('task completed')
 

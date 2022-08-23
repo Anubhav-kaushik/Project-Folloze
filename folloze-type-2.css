@@ -1,0 +1,73 @@
+.live-board {
+    --btn-text-color: #ffffff;
+    --btn-bg-color: #00b7b6;
+    --btn-text-color-hover: #fff;
+    --btn-bg-color-hover: #FE595F;
+    --btn-border-radius: 5px;
+
+    --items-heading-color: #001D2E;
+
+    --promo-heading-color: #001D2E;
+    --promo-column-heading-color: #001D2E;
+}
+
+.live-board .cta-button .cta-button-background {
+    display: none;
+}
+
+.live-board .banner-box .banner-container .banner-content .cta-button,
+.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button {
+    background-color: var(--btn-bg-color) !important;
+    transition: background-color 0.2s ease,
+        color 0.2s ease;
+    position: relative;
+    border-radius: var(--btn-border-radius) !important;
+    overflow: hidden;
+    border: none !important;
+}
+
+.live-board .banner-box .banner-container .banner-content .cta-button::after,
+.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button::after {
+    content: '';
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: -5%;
+    left: -5%;
+    border-radius: var(--btn-border-radius) !important;
+    background-color: var(--btn-bg-color-hover) !important;
+    transition: transform 0.2s ease;
+    transform: translateX(100%);
+}
+
+.live-board .banner-box .banner-container .banner-content .cta-button label,
+.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button label {
+    color: var(--btn-text-color) !important;
+    position: relative;
+    z-index: 999;
+}
+
+.live-board .banner-box .banner-container .banner-content .cta-button:hover::after,
+.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover::after {
+    transform: translateX(0);
+}
+
+.live-board .banner-box .banner-container .banner-content .cta-button:hover label,
+.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover label {
+    color: var(--btn-text-color-hover) !important;
+}
+
+.live-board .positioning-container .positioning-text h1 {
+    font-size: 3.5rem !important;
+    font-weight: 500 !important;
+    color: var(--items-heading-color) !important;
+}
+
+.live-board .promotion-area-container .promotion-area-text h1 {
+    font-weight: 500 !important;
+    color: var(--promo-heading-color) !important;
+}
+
+.live-board .promotion-area-container .promotion-items.columns-container .promotion-item .promotion-item-text h2 {
+    color: var(--promo-column-heading-color) !important;
+}

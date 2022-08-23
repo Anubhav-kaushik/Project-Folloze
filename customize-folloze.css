@@ -1,0 +1,48 @@
+.live-board {
+    --btn-text-color: #ffffff;
+    --btn-bg-color: #00b7b6;
+    --btn-text-color-hover: #fff;
+    --btn-bg-color-hover: #FE595F;
+
+    --items-heading-color: #001D2E;
+
+    --promo-heading-color: #001D2E;
+    --promo-column-heading-color: #001D2E;
+}
+
+.live-board .cta-button .cta-button-background {
+    display: none;
+}
+
+.live-board .banner-box .banner-container .banner-content .cta-button {
+    background-color: var(--btn-bg-color) !important;
+    transition: background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.live-board .banner-box .banner-container .banner-content .cta-button label {
+    color: var(--btn-text-color) !important;
+}
+
+.live-board .banner-box .banner-container .banner-content .cta-button:hover {
+    background-color: var(--btn-bg-color-hover) !important;
+}
+
+.live-board .banner-box .banner-container .banner-content .cta-button:hover label {
+    color: var(--btn-text-color-hover) !important;
+}
+
+.live-board .positioning-container .positioning-text h1 {
+    font-size: 3.5rem !important;
+    font-weight: 500 !important;
+    color: var(--items-heading-color) !important;
+}
+
+.live-board .promotion-area-container .promotion-area-text h1 {
+    font-weight: 500 !important;
+    color: var(--promo-heading-color) !important;
+}
+
+.live-board .promotion-area-container .promotion-items.columns-container .promotion-item .promotion-item-text h2 {
+    color: var(--promo-column-heading-color) !important;
+}

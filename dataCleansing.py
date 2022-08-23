@@ -1,3 +1,4 @@
+from hashlib import new
 import pandas as pd
 
 
@@ -17,6 +18,7 @@ def availableCols(df):
     expectedCols = {
         "Company Name": ["Company Name"],
         "Domain": ["Domain"],
+        "Additional Domains": ["Additional Domains"],
         "Representative Name": ["AE/Rep Name"],
         "Representative Email": ["AE/Rep Email"],
         "Representative Phone": ["AE Phone"],
@@ -53,17 +55,32 @@ def sep_domains(domains: str, sep: str = '\n'):
     return domainsList
 
 
+def remove_nan(column):
+    new_col = []
+    for value in column:
+        if value == 'nan':
+            new_col.append('')
+        else:
+            new_col.append(value)
+
+    return new_col
+
+
 def dataCleansing(df):
     col_available, col_status = availableCols(df)
     newData = {}
     for col in col_available:
         temp = list(map(lambda x: str(x).strip(), df[col]))
+        temp = remove_nan(temp)
         if len(temp) < 1:
             col_status[col] = False
             continue
         newData[col] = temp
 
     newData['Domain'] = list(map(sep_domains, newData['Domain']))
+
+    if 'Additional Domains' in col_available:
+        newData['Additional Domains'] = list(map(sep_domains, newData['Additional Domains']))
 
     return newData, col_status
 
@@ -99,6 +116,7 @@ if __name__ == "__main__":
     personalizationExpectedValues = {
         "Company Name": ["Company Name", "Company Name\nHow they're referred to verbally"],
         "Domain": ["Domain", "Domain\n(no leading letters)"],
+        "Additional Domains": ["Additional Domains"],
         "Representative Name": ["AE/Rep Name", "Contact card\nAE/Rep Name"],
         "Representative Email": ["AE/Rep Email", "Contact card\nAE/Rep Email"],
         "Representative Phone": ["AE Phone", "AE Phone Number"],

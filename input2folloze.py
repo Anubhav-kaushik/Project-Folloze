@@ -205,12 +205,13 @@ class Account:
             status = self.find_image(imgLoc)
 
         return status
-    
+
     def personalizeText(self):
         '''this function add the text to the last text block'''
         # gui.hotkey('shift', 'tab')
         # gui.hotkey('shift', 'tab')
-        [x, y] = self.waitUntilFound('img/designer/personalization/add_alternative_rule.png')
+        [x, y] = self.waitUntilFound(
+            'img/designer/personalization/add_alternative_rule.png')
         gui.moveTo(x, y-120)
         gui.click()
         copy(self.text)
@@ -230,6 +231,27 @@ class Account:
         # click on apply button
         self.findNClick('img/designer/logo/apply.png')
 
+    def addAdditionalDomains(self):
+        '''
+            Add extra domain to the personalized rules
+        '''
+
+        # search the main domain on the screen
+        copy(self.domains[0])
+        gui.hotkey('ctrl', 'f')
+
+        gui.hotkey('ctrl', 'v')
+
+        speak('press control after opening the domain adding tab')
+
+        keyboard.wait('ctrl')
+
+        for extra in self.text:
+            copy(extra)
+            gui.hotkey('ctrl', 'v')
+            gui.press('enter')
+
+        # click on the three dots corresponding to the personalized rule
 
     def searchAsset(self):
         self.moveToAny(['img/designer/personalization/search.png',
@@ -257,6 +279,7 @@ class PersonalizationBot:
         self.domains = cleanData['Domain']
 
         self.what2personalize = what2personalize
+        self.texts = None
 
         if what2personalize == 'Leading Asset':
             self.texts = cleanData['AE/Rep Name']
@@ -265,7 +288,7 @@ class PersonalizationBot:
         elif what2personalize == 'Logo' or what2personalize == 'Logo Dummy':
             self.texts = None
         elif what2personalize == 'Additional Domains':
-            self.addDomains = cleanData[what2personalize]
+            self.additionalDomains = cleanData[what2personalize]
         else:
             self.texts = cleanData[what2personalize]
 
@@ -313,11 +336,24 @@ class PersonalizationBot:
 
             if self.what2personalize == 'Leading Asset':
                 accountObj.searchAsset()
-            
+
             if self.what2personalize == 'Logo Dummy':
                 accountObj.addDummyLogo()
 
         speak(f'All the {self.what2personalize} are personalized')
+
+    def addXDomains(self):
+        for account, domains, xDomains in zip(self.accounts, self.domains, self.additionalDomains):
+            accountObj = Account(account, domains, xDomains)
+
+            if len(xDomains) < 1:
+                continue
+
+            print(xDomains)
+            speak('press control to continue')
+            keyboard.wait('ctrl')
+
+            accountObj.addAdditionalDomains()
 
 
 if __name__ == '__main__':
