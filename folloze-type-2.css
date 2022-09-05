@@ -1,15 +1,36 @@
 .live-board {
     --btn-text-color: #ffffff;
-    --btn-bg-color: #00b7b6;
+    --btn-bg-color: #e53535;
     --btn-text-color-hover: #fff;
-    --btn-bg-color-hover: #FE595F;
-    --btn-border-radius: 5px;
+    --btn-bg-color-hover: #0002;
 
-    --items-heading-color: #001D2E;
+    --btn-text-size: 1.2em;
+    --btn-text-weight: bold;
 
-    --promo-heading-color: #001D2E;
-    --promo-column-heading-color: #001D2E;
+    --btn-border-radius: 5em;
+    --btn-border-width: 2px;
+    --btn-border-style: solid;
+    --btn-border-color: #e53535;
+    --btn-border-width-hover: 2px;
+    --btn-border-style-hover: solid;
+    --btn-border-color-hover: #e53535;
+
+    --btn-padding-top-bottom: 0;
+    --btn-padding-left-right: 2.5rem;
+
+    --btn-hover-x-position-before: -100%;
+    --btn-hover-x-position-after: 0%;
+    --btn-hover-y-position-before: 0%;
+    --btn-hover-y-position-after: 0%;
+
+    --items-heading-color: #000;
+    --items-heading-size: 3.5rem;
+
+    --promo-heading-color: #000;
+    --promo-column-heading-color: #e53535;
 }
+
+
 
 .live-board .cta-button .cta-button-background {
     display: none;
@@ -18,12 +39,18 @@
 .live-board .banner-box .banner-container .banner-content .cta-button,
 .live-board .promotion-area-container .custom-cta-btn .promotion-cta-button {
     background-color: var(--btn-bg-color) !important;
-    transition: background-color 0.2s ease,
+    transition: background-color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1),
         color 0.2s ease;
     position: relative;
     border-radius: var(--btn-border-radius) !important;
     overflow: hidden;
-    border: none !important;
+    border: var(--btn-border-width, 2px) var(--btn-border-style, solid) var(--btn-border-color, black) !important;
+    padding: var(--btn-padding-top-bottom) var(--btn-padding-left-right) !important;
+}
+
+.live-board .banner-box .banner-container .banner-content .cta-button:hover,
+.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover {
+    border: var(--btn-border-width-hover, 2px) var(--btn-border-style-hover, solid) var(--btn-border-color-hover, black) !important;
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button::after,
@@ -36,8 +63,13 @@
     left: -5%;
     border-radius: var(--btn-border-radius) !important;
     background-color: var(--btn-bg-color-hover) !important;
-    transition: transform 0.2s ease;
-    transform: translateX(100%);
+    transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: translate(var(--btn-hover-x-position-before), var(--btn-hover-y-position-before));
+}
+
+.live-board .banner-box .banner-container .banner-content .cta-button:hover::after,
+.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover::after {
+    transform: translate(var(--btn-hover-x-position-after), var(--btn-hover-y-position-after));
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button label,
@@ -45,11 +77,8 @@
     color: var(--btn-text-color) !important;
     position: relative;
     z-index: 999;
-}
-
-.live-board .banner-box .banner-container .banner-content .cta-button:hover::after,
-.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover::after {
-    transform: translateX(0);
+    font-size: var(--btn-text-size) !important;
+    font-weight: var(--btn-text-weight) !important;
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button:hover label,
@@ -58,7 +87,7 @@
 }
 
 .live-board .positioning-container .positioning-text h1 {
-    font-size: 3.5rem !important;
+    font-size: var(--items-heading-size, 3.5rem) !important;
     font-weight: 500 !important;
     color: var(--items-heading-color) !important;
 }
