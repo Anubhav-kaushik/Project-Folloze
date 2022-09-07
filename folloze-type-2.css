@@ -22,6 +22,7 @@
     --btn-hover-x-position-after: 0%;
     --btn-hover-y-position-before: 0%;
     --btn-hover-y-position-after: 0%;
+    --btn-animation-speed: 0.5s;
 
     --items-heading-color: #000;
     --items-heading-size: 3.5rem;
@@ -29,8 +30,6 @@
     --promo-heading-color: #000;
     --promo-column-heading-color: #e53535;
 }
-
-
 
 .live-board .cta-button .cta-button-background {
     display: none;
@@ -63,7 +62,7 @@
     left: -5%;
     border-radius: var(--btn-border-radius) !important;
     background-color: var(--btn-bg-color-hover) !important;
-    transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: transform var(--btn-animation-speed) cubic-bezier(0.075, 0.82, 0.165, 1);
     transform: translate(var(--btn-hover-x-position-before), var(--btn-hover-y-position-before));
 }
 
@@ -99,4 +98,9 @@
 
 .live-board .promotion-area-container .promotion-items.columns-container .promotion-item .promotion-item-text h2 {
     color: var(--promo-column-heading-color) !important;
+}
+
+.live-board-desktop .seller-card-container .card.opened .open-card-additional-data .cta-button { 
+    background-color: var(--btn-bg-color) !important; 
+    border-radius: 0 0 8px 8px !important; 
 }
