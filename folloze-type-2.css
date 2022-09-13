@@ -1,34 +1,58 @@
 .live-board {
-    --btn-text-color: #ffffff;
-    --btn-bg-color: #e53535;
-    --btn-text-color-hover: #fff;
-    --btn-bg-color-hover: #0002;
+    /* Button color settings */
+        --btn-text-color: #ffffff;
+        --btn-bg-color: #e53535;
+        --btn-text-color-hover: #fff;
+        --btn-bg-color-hover: #0002;
 
-    --btn-text-size: 1.2em;
-    --btn-text-weight: bold;
+    /* Button Typography */
+        --btn-text-size: 1.2rem;
+        --btn-text-weight: bold;
 
-    --btn-border-radius: 5em;
-    --btn-border-width: 2px;
-    --btn-border-style: solid;
-    --btn-border-color: #e53535;
-    --btn-border-width-hover: 2px;
-    --btn-border-style-hover: solid;
-    --btn-border-color-hover: #e53535;
+    /* Button Border settings */
+        --btn-border-radius: 0;
+        --btn-border-width: 0;
+        --btn-border-style: solid;
+        --btn-border-color: #e53535;
+        --btn-border-width-hover: 0;
+        --btn-border-style-hover: solid;
+        --btn-border-color-hover: #e53535;
 
-    --btn-padding-top-bottom: 0;
-    --btn-padding-left-right: 2.5rem;
+    /* Button Padding */
+        --btn-padding-top-bottom: 0;
+        --btn-padding-left-right: 2.5em;
 
-    --btn-hover-x-position-before: -100%;
-    --btn-hover-x-position-after: 0%;
-    --btn-hover-y-position-before: 0%;
-    --btn-hover-y-position-after: 0%;
-    --btn-animation-speed: 0.5s;
+    /* Button Animation effects settings */
+        /* Only use one effect at a time and change the value of other effect to its default */
+        /* Sliding animation settings */
+            /* Animation container position before hover [value between -100% to 100% (both inclusive)] */
+                --btn-hover-x-position-before: -100%; /* Default: 0% */
+                --btn-hover-y-position-before: 0%; /* Default: 0% */
+            /* Animation container position after hover */
+                --btn-hover-x-position-after: 0%; /* Don't change this value from 0% without knowing the effect */ /* Default: 0% */
+                --btn-hover-y-position-after: 0%; /* Don't change this value from 0% without knowing the effect */ /* Default: 0% */
 
-    --items-heading-color: #000;
-    --items-heading-size: 3.5rem;
+        /* Growing animation settings */
+            /* Animation container size before hover [value between 0 and 1 (both inclusive)] */
+                --btn-hover-x-scale-before: 1; /* Default: 1 */
+                --btn-hover-y-scale-before: 1; /* Default: 1 */
+            /* Animation container size after hover */
+                --btn-hover-x-scale-after: 1; /* Default: 1 */
+                --btn-hover-y-scale-after: 1; /* Default: 1 */
 
-    --promo-heading-color: #000;
-    --promo-column-heading-color: #e53535;
+        /* Animation timing settings */
+            --btn-animation-time: 0.5s; /* More the time slower the animation speed */
+
+    /* Items Heading settings */
+        --items-heading-color: #000;
+        --items-heading-size: 3.5rem;
+
+    /* Promo Section settings */
+        /* Promo Section main heading settings */
+            --promo-heading-color: #000;
+        
+        /* Promo Section Icons Heading settings */
+            --promo-column-heading-color: #e53535;
 }
 
 .live-board .cta-button .cta-button-background {
@@ -62,13 +86,15 @@
     left: -5%;
     border-radius: var(--btn-border-radius) !important;
     background-color: var(--btn-bg-color-hover) !important;
-    transition: transform var(--btn-animation-speed) cubic-bezier(0.075, 0.82, 0.165, 1);
-    transform: translate(var(--btn-hover-x-position-before), var(--btn-hover-y-position-before));
+    transition: transform var(--btn-animation-time) cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: translate(var(--btn-hover-x-position-before), var(--btn-hover-y-position-before)),
+                scale(var(--btn-hover-x-scale-before), var(--btn-hover-y-scale-before));
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button:hover::after,
 .live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover::after {
-    transform: translate(var(--btn-hover-x-position-after), var(--btn-hover-y-position-after));
+    transform: translate(var(--btn-hover-x-position-after), var(--btn-hover-y-position-after)),
+                scale(var(--btn-hover-x-scale-after), var(--btn-hover-y-scale-after));
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button label,
