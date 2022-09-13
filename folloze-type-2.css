@@ -13,10 +13,10 @@
         --btn-border-radius: 0;
         --btn-border-width: 0;
         --btn-border-style: solid;
-        --btn-border-color: #e53535;
+        --btn-border-color: var(--btn-bg-color);
         --btn-border-width-hover: 0;
         --btn-border-style-hover: solid;
-        --btn-border-color-hover: #FF5700;
+        --btn-border-color-hover: var(--btn-bg-color);
 
     /* Button Padding */
         --btn-padding-top-bottom: 0;
@@ -49,15 +49,15 @@
             --items-heading-size: 3.5rem;
 
         /* Leading Asset settings */
-            --leading-asset-bg-color: #e53535;
-            --leading-asset-bg-color-hover: #e53535;
+            --leading-asset-bg-color: var(--btn-bg-color);
+            --leading-asset-bg-color-hover: var(--btn-bg-color);
 
     /* Promo Section settings */
         /* Promo Section main heading settings */
             --promo-heading-color: #000;
         
         /* Promo Section Icons Heading settings */
-            --promo-column-heading-color: #FF5700;
+            --promo-column-heading-color: var(--btn-bg-color);
 }
 
 .live-board .cta-button .cta-button-background {
