@@ -50,6 +50,7 @@
 
         /* Leading Asset settings */
             --leading-asset-bg-color: #e53535;
+            --leading-asset-bg-color-hover: #e53535;
 
     /* Promo Section settings */
         /* Promo Section main heading settings */
@@ -124,6 +125,10 @@
 
 .live-board-desktop .board-content-container .positioning-container .leading-item .description-container {
     background-color: var(--leading-asset-bg-color, #222) !important;
+}
+
+.live-board-desktop .board-content-container .positioning-container .leading-item .description-container:hover {
+    background-color: var(--leading-asset-bg-color-hover, #222) !important;
 }
 
 .live-board .promotion-area-container .promotion-area-text h1 {
