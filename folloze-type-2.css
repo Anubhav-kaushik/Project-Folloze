@@ -43,9 +43,13 @@
         /* Animation timing settings */
             --btn-animation-time: 0.5s; /* More the time slower the animation speed */
 
-    /* Items Heading settings */
-        --items-heading-color: #000;
-        --items-heading-size: 3.5rem;
+    /* Items Section settings */
+        /* Items Heading settings */
+            --items-heading-color: #000;
+            --items-heading-size: 3.5rem;
+
+        /* Leading Asset settings */
+            --leading-asset-bg-color: #e53535;
 
     /* Promo Section settings */
         /* Promo Section main heading settings */
@@ -116,6 +120,10 @@
     font-size: var(--items-heading-size, 3.5rem) !important;
     font-weight: 500 !important;
     color: var(--items-heading-color) !important;
+}
+
+.live-board-desktop .board-content-container .positioning-container .leading-item .description-container {
+    background-color: var(--leading-asset-bg-color, #222) !important;
 }
 
 .live-board .promotion-area-container .promotion-area-text h1 {
