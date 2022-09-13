@@ -1,12 +1,12 @@
 .live-board {
     /* Button color settings */
         --btn-text-color: #ffffff;
-        --btn-bg-color: #e53535;
+        --btn-bg-color: #FF5700;
         --btn-text-color-hover: #fff;
         --btn-bg-color-hover: #0002;
 
     /* Button Typography */
-        --btn-text-size: 1.2rem;
+        --btn-text-size: 1.7rem;
         --btn-text-weight: bold;
 
     /* Button Border settings */
@@ -16,7 +16,7 @@
         --btn-border-color: #e53535;
         --btn-border-width-hover: 0;
         --btn-border-style-hover: solid;
-        --btn-border-color-hover: #e53535;
+        --btn-border-color-hover: #FF5700;
 
     /* Button Padding */
         --btn-padding-top-bottom: 0;
@@ -29,8 +29,8 @@
                 --btn-hover-x-position-before: -100%; /* Default: 0% */
                 --btn-hover-y-position-before: 0%; /* Default: 0% */
             /* Animation container position after hover */
-                --btn-hover-x-position-after: 0%; /* Don't change this value from 0% without knowing the effect */ /* Default: 0% */
-                --btn-hover-y-position-after: 0%; /* Don't change this value from 0% without knowing the effect */ /* Default: 0% */
+                --btn-hover-x-position-after: 0%; /* Don't change this value from 0% without knowing the effect / / Default: 0% */
+                --btn-hover-y-position-after: 0%; /* Don't change this value from 0% without knowing the effect / / Default: 0% */
 
         /* Growing animation settings */
             /* Animation container size before hover [value between 0 and 1 (both inclusive)] */
@@ -52,7 +52,7 @@
             --promo-heading-color: #000;
         
         /* Promo Section Icons Heading settings */
-            --promo-column-heading-color: #e53535;
+            --promo-column-heading-color: #FF5700;
 }
 
 .live-board .cta-button .cta-button-background {
@@ -86,15 +86,16 @@
     left: -5%;
     border-radius: var(--btn-border-radius) !important;
     background-color: var(--btn-bg-color-hover) !important;
-    transition: transform var(--btn-animation-time) cubic-bezier(0.075, 0.82, 0.165, 1);
-    transform: translate(var(--btn-hover-x-position-before), var(--btn-hover-y-position-before)),
-                scale(var(--btn-hover-x-scale-before), var(--btn-hover-y-scale-before));
+    transition: transform var(--btn-animation-time) cubic-bezier(0.075, 0.82, 0.165, 1),
+                scale var(--btn-animation-time) cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: translate(var(--btn-hover-x-position-before), var(--btn-hover-y-position-before));
+    scale: var(--btn-hover-x-scale-before) var(--btn-hover-y-scale-before);
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button:hover::after,
 .live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover::after {
-    transform: translate(var(--btn-hover-x-position-after), var(--btn-hover-y-position-after)),
-                scale(var(--btn-hover-x-scale-after), var(--btn-hover-y-scale-after));
+    transform: translate(var(--btn-hover-x-position-after), var(--btn-hover-y-position-after));
+    scale: var(--btn-hover-x-scale-after) var(--btn-hover-y-scale-after);
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button label,
