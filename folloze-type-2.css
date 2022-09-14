@@ -11,12 +11,16 @@
 
     /* Button Border settings */
         --btn-border-radius: 0;
+        
         --btn-border-width: 0;
-        --btn-border-style: solid;
-        --btn-border-color: var(--btn-bg-color);
         --btn-border-width-hover: 0;
-        --btn-border-style-hover: solid;
+        
+        --btn-border-color: var(--btn-bg-color);
         --btn-border-color-hover: var(--btn-bg-color);
+        
+        --btn-border-style: solid;
+        --btn-border-style-hover: solid;
+        
 
     /* Button Padding */
         --btn-padding-top-bottom: 0;
@@ -43,6 +47,11 @@
         /* Animation timing settings */
             --btn-animation-time: 0.5s; /* More the time slower the animation speed */
 
+    /* Banner Text setting */
+        --banner-heading-text-size: 4.2rem; /* Default: 4.2rem */
+        --banner-heading-text-color: #000; /* Default: rgb(51, 51, 51) */
+        --banner-heading-text-weight: 600; /* Default: 400 */
+
     /* Items Section settings */
         /* Items Heading settings */
             --items-heading-color: #000;
@@ -58,6 +67,12 @@
         
         /* Promo Section Icons Heading settings */
             --promo-column-heading-color: var(--btn-bg-color);
+}
+
+.live-board .live-board-desktop .banner-container.medium .banner-content h1 {
+    font-size: var(--banner-heading-text-size) !important;
+    color: var(--banner-heading-text-color) !important;
+    font-weight: var(--banner-heading-text-weight) !important;
 }
 
 .live-board .cta-button .cta-button-background {
