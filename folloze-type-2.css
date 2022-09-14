@@ -11,7 +11,7 @@
 
     /* Button Border settings */
         --btn-border-radius: 0;
-        
+
         --btn-border-width: 0;
         --btn-border-width-hover: 0;
         
@@ -69,7 +69,7 @@
             --promo-column-heading-color: var(--btn-bg-color);
 }
 
-.live-board .live-board-desktop .banner-container.medium .banner-content h1 {
+.live-board .live-board-desktop .banner-container .banner-content h1 {
     font-size: var(--banner-heading-text-size) !important;
     color: var(--banner-heading-text-color) !important;
     font-weight: var(--banner-heading-text-weight) !important;
