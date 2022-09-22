@@ -30,7 +30,7 @@
         /* Only use one effect at a time and change the value of other effect to its default */
         /* Sliding animation settings */
             /* Animation container position before hover [value between -100% to 100% (both inclusive)] */
-                --btn-hover-x-position-before: -100%; /* Default: 0% */
+                --btn-hover-x-position-before: 0%; /* Default: 0% */
                 --btn-hover-y-position-before: 0%; /* Default: 0% */
             /* Animation container position after hover */
                 --btn-hover-x-position-after: 0%; /* Don't change this value from 0% without knowing the effect / / Default: 0% */
@@ -43,6 +43,12 @@
             /* Animation container size after hover */
                 --btn-hover-x-scale-after: 1; /* Default: 1 */
                 --btn-hover-y-scale-after: 1; /* Default: 1 */
+
+        /* Blink animation settings */
+            /* Animation container opacity before hover [value between 0 and 1 (both inclusive)] */
+            --btn-opacity-before: 1; /* Default: 1 */
+            /* Animation container opacity after hover [value between 0 and 1 (both inclusive)] */
+            --btn-opacity-after: 1; /* Default: 1 */
 
         /* Animation timing settings */
             --btn-animation-time: 0.5s; /* More the time slower the animation speed */
@@ -107,15 +113,18 @@
     border-radius: var(--btn-border-radius) !important;
     background-color: var(--btn-bg-color-hover) !important;
     transition: transform var(--btn-animation-time) cubic-bezier(0.075, 0.82, 0.165, 1),
-                scale var(--btn-animation-time) cubic-bezier(0.075, 0.82, 0.165, 1);
+                scale var(--btn-animation-time) cubic-bezier(0.075, 0.82, 0.165, 1),
+                opacity var(--btn-animation-time) ease-in-out;
     transform: translate(var(--btn-hover-x-position-before), var(--btn-hover-y-position-before));
     scale: var(--btn-hover-x-scale-before) var(--btn-hover-y-scale-before);
+    opacity: var(--btn-opacity-before);
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button:hover::after,
 .live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover::after {
     transform: translate(var(--btn-hover-x-position-after), var(--btn-hover-y-position-after));
     scale: var(--btn-hover-x-scale-after) var(--btn-hover-y-scale-after);
+    opacity: var(--btn-opacity-after);
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button label,
