@@ -95,6 +95,9 @@
     overflow: hidden;
     border: var(--btn-border-width, 2px) var(--btn-border-style, solid) var(--btn-border-color, black) !important;
     padding: var(--btn-padding-top-bottom) var(--btn-padding-left-right) !important;
+    transition: border-color var(--btn-animation-time) ease-in-out,
+                color var(--btn-animation-time) ease-in-out,
+                border-width var(--btn-animation-time) ease-in-out;
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button:hover,
