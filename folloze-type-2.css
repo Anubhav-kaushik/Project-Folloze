@@ -1,9 +1,18 @@
 .live-board {
+    /* General Settings */
+    --theme-color: #ff5700;
+    --text-color-primary: #000;
+    --text-color-secondary: #fff;
+    --text-color-tertiary: #666;
+    --highlight-color: #0062ff;
+    --bg-color-primary: #fff;
+    --bg-color-secondary: #fafafa;
+
     /* Button color settings */
-        --btn-text-color: #ffffff;
-        --btn-bg-color: #FF5700;
-        --btn-text-color-hover: #fff;
-        --btn-bg-color-hover: #0002;
+        --btn-text-color: var(--text-color-secondary);
+        --btn-bg-color: var(--theme-color);
+        --btn-text-color-hover: var(--text-color-secondary);
+        --btn-bg-color-hover: var(--highlight-color);
 
     /* Button Typography */
         --btn-text-size: 1.7rem;
@@ -15,12 +24,8 @@
         --btn-border-width: 0;
         --btn-border-width-hover: 0;
         
-        --btn-border-color: var(--btn-bg-color);
-        --btn-border-color-hover: var(--btn-bg-color);
-        
-        --btn-border-style: solid;
-        --btn-border-style-hover: solid;
-        
+        --btn-border-color: var(--theme-color);
+        --btn-border-color-hover: var(--theme-color);    
 
     /* Button Padding */
         --btn-padding-top-bottom: 0;
@@ -51,41 +56,42 @@
             --btn-opacity-after: 1; /* Default: 1 */
 
         /* Animation timing settings */
-            --btn-animation-time: 0.5s; /* More the time slower the animation speed */
+            --btn-animation-time: 0.25s; /* More the time slower the animation speed */
 
     /* Banner Text setting */
         --banner-heading-text-size: 4.2rem; /* Default: 4.2rem */
-        --banner-heading-text-color: #000; /* Default: rgb(51, 51, 51) */
+        --banner-heading-text-color: var(--text-color-primary); /* Default: rgb(51, 51, 51) */
         --banner-heading-text-weight: 600; /* Default: 400 */
 
     /* Items Section settings */
         /* Items Heading settings */
-            --items-heading-color: #000;
+            --items-heading-color: var(--text-color-primary);
             --items-heading-size: 3.5rem;
+            --items-heading-weight: 500;
 
         /* Leading Asset settings */
-            --leading-asset-bg-color: var(--btn-bg-color);
-            --leading-asset-bg-color-hover: var(--btn-bg-color);
+            --leading-asset-bg-color: var(--theme-color);
+            --leading-asset-bg-color-hover: var(--theme-color);
 
     /* Promo Section settings */
         /* Promo Section main heading settings */
-            --promo-heading-color: #000;
+            --promo-heading-color: var(--text-color-primary);
             --promo-heading-weight: 800;
             --promo-heading-size: 3.2rem;
         
         /* Promo Section Icons Heading settings */
-            --promo-column-heading-color: var(--btn-bg-color);
+            --promo-column-heading-color: var(--theme-color);
             --promo-column-heading-weight: 600;
             --promo-column-heading-size: 2rem;
 
         /* Promo area 1 settings */
-            --promo-1-bg-color: #fff;
+            --promo-1-bg-color: var(--bg-color-primary);
 
         /* Promo area 2 settings */
-            --promo-2-bg-color: #fff;
+            --promo-2-bg-color: var(--bg-color-primary);
 
         /* Promo area 3 settings */
-            --promo-3-bg-color: #fff;
+            --promo-3-bg-color: var(--bg-color-primary);
 }
 
 .live-board .live-board-desktop .banner-container .banner-content h1 {
@@ -159,8 +165,8 @@
 
 .live-board .positioning-container .positioning-text h1 {
     font-size: var(--items-heading-size, 3.5rem) !important;
-    font-weight: 500 !important;
-    color: var(--items-heading-color) !important;
+    font-weight: var(--items-heading-weight, 500) !important;
+    color: var(--items-heading-color, #000) !important;
 }
 
 .live-board-desktop .board-content-container .positioning-container .leading-item .description-container {
@@ -212,6 +218,6 @@
 }
 
 .live-board-desktop .seller-card-container .card.opened .open-card-additional-data .cta-button { 
-    background-color: var(--btn-bg-color) !important; 
+    background-color: var(--theme-color) !important; 
     border-radius: 0 0 8px 8px !important; 
 }
