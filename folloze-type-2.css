@@ -105,7 +105,8 @@
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button,
-.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button {
+.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button,
+.live-board-desktop .header-container .header-content .right-content > .cta-button {
     background-color: var(--btn-bg-color) !important;
     transition: background-color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1),
         color 0.2s ease;
