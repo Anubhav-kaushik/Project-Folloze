@@ -121,12 +121,14 @@
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button:hover,
-.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover {
+.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover,
+.live-board-desktop .header-container .header-content .right-content > .cta-button:hover {
     border: var(--btn-border-width-hover, 2px) var(--btn-border-style-hover, solid) var(--btn-border-color-hover, black) !important;
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button::after,
-.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button::after {
+.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button::after,
+.live-board-desktop .header-container .header-content .right-content > .cta-button::after {
     content: '';
     position: absolute;
     width: 110%;
@@ -144,14 +146,16 @@
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button:hover::after,
-.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover::after {
+.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover::after,
+.live-board-desktop .header-container .header-content .right-content > .cta-button:hover::after {
     transform: translate(var(--btn-hover-x-position-after), var(--btn-hover-y-position-after));
     scale: var(--btn-hover-x-scale-after) var(--btn-hover-y-scale-after);
     opacity: var(--btn-opacity-after);
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button label,
-.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button label {
+.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button label,
+.live-board-desktop .header-container .header-content .right-content > .cta-button label {
     color: var(--btn-text-color) !important;
     position: relative;
     z-index: 999;
@@ -160,7 +164,8 @@
 }
 
 .live-board .banner-box .banner-container .banner-content .cta-button:hover label,
-.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover label {
+.live-board .promotion-area-container .custom-cta-btn .promotion-cta-button:hover label,
+.live-board-desktop .header-container .header-content .right-content > .cta-button:hover label {
     color: var(--btn-text-color-hover) !important;
 }
 
